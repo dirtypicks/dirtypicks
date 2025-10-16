@@ -16,11 +16,13 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await registerUser({name, email, password}) ;
-    if (res?.msg) {
-      showToast("Se ha enviado un correo para que valides tu usuario. Gracias por registrarte", "success")
-      setMsg(res.msg);
-      setTimeout(() => router.push("/login"), 2000);
+    const res = await registerUser({ name, email, password });
+    if (res.ok) {
+        showToast("Se ha enviado un correo para que valides tu usuario. Gracias por registrarte", "success")
+        //setMsg(res.msg);
+        setTimeout(() => router.push("/login"), 2000);
+    }else{
+      showToast(res.msg, "error")
     }
   };
 
