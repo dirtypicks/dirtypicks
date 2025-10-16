@@ -31,7 +31,7 @@ export default function BuyPickPage() {
   const handleBuy = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (!token && !email) return alert("Ingresa tu correo para continuar");
+      if (!token && !email) return showToast("Ingresa tu correo para continuar", "warning");
       const data = await createOrder(pick.id, email);
       if(data.ok){
         showToast("Se ha generado correctamente tu orden. Revisa tu correo", "success")
@@ -39,9 +39,8 @@ export default function BuyPickPage() {
       }else{
         showToast("Error al generar la orden", "error")
       }
-      //setTimeout(() => router.push("/"), 1500);
     } catch {
-      alert("Error al crear la orden");
+      showToast("Error al generar la orden", "error")
     }
   };
 
