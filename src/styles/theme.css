@@ -1,0 +1,25 @@
+:root {
+  /* Colores base (modo claro) */
+  --color-bg: #f5f5f5;
+  --color-card-bg: #ffffff;
+  --color-text: #111111;
+  --color-text-secondary: #444444;
+  --color-primary: #e50914;
+  --color-primary-hover: #b20710;
+  --color-success: #0f9d58;
+  --color-error: #d93025;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Modo oscuro */
+[data-theme="dark"] {
+  --color-bg: #0d0d0d;
+  --color-card-bg: #1a1a1a;
+  --color-text: #f5f5f5;
+  --color-text-secondary: #cccccc;
+  --color-primary: #e50914;
+  --color-primary-hover: #ff1f2b;
+  --color-success: #34a853;
+  --color-error: #ea4335;
+  --shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
