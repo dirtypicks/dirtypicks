@@ -9,6 +9,10 @@
   --color-success: #0f9d58;
   --color-error: #d93025;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --toastify-color-info: #8cb0c8 !important;
+  --toastify-color-success: #67a069 !important;
+  --toastify-color-warning: #f6dd7b !important;
+  --toastify-color-error: #d9534f !important;
 }
 
 /* Modo oscuro */
@@ -17,9 +21,13 @@
   --color-card-bg: #1a1a1a;
   --color-text: #f5f5f5;
   --color-text-secondary: #cccccc;
-  --color-primary: #e50914;
-  --color-primary-hover: #ff1f2b;
+  --color-primary: #e59f09;
+  --color-primary-hover: #ffb81f;
   --color-success: #34a853;
   --color-error: #ea4335;
   --shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  --toastify-color-info: #8cb0c8 !important;
+  --toastify-color-success: #67a069 !important;
+  --toastify-color-warning: #f6dd7b !important;
+  --toastify-color-error: #d9534f !important;
 }

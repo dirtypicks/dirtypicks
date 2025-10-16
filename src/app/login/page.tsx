@@ -1,21 +1,23 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "../../styles/auth.module.css";
+import styles from "../styles/auth.module.css";
 import { loginUser } from "../utils/api";
 import Link from "next/link";
+import { useAuthStore } from "../store/auth";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+   const setAuth = useAuthStore((s) => s.setToken);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await loginUser({ email, password });
     if (res?.token) {
-      sessionStorage.setItem("token", res.token);
+      setAuth(res.token); // Esto actualiza instantáneamente la navbar
       router.push("/");
     } else {
       setError(res?.msg || "Error al iniciar sesión");
@@ -30,6 +32,7 @@ export default function LoginPage() {
           type="email"
           placeholder="Correo electrónico"
           value={email}
+          id="email"
           onChange={(e) => setEmail(e.target.value)}
           className={styles.input}
         />

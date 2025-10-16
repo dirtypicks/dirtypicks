@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "../../styles/Navbar.module.css";
-import { getToken, getUserRole, removeToken } from "../utils/auth";
+import styles from "../styles/Navbar.module.css";
+import { useAuthStore } from "../store/auth";
+import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
-  const [token, setToken] = useState<string | null>(null);
-  const [role, setRole] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const { token, role, logout } = useAuthStore();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "dark";
@@ -25,35 +25,16 @@ export default function Navbar() {
     localStorage.setItem("theme", newTheme);
   };
 
-  useEffect(() => {
-    const loadAuth = () => {
-      setToken(getToken());
-      setRole(getUserRole());
-    };
-    loadAuth();
-    const listener = () => loadAuth();
-    window.addEventListener("storage", listener);
-    return () => window.removeEventListener("storage", listener);
-  }, []);
-
-  const handleLogout = () => {
-    removeToken();
-    setToken(null);
-    setRole(null);
-    router.push("/login");
-  };
-
-  const goTo = (path: string) => {
-    router.push(path);
+  const closeMenu = () => {
     setMenuOpen(false);
   };
 
   return (
     <header className={styles.navbar}>
       <div className={styles.navbarContent}>
-        <h1 className={styles.logo} onClick={() => goTo("/")}>
+        <Link className={styles.logo} href="/" onClick={closeMenu}>
           DirtyPicks
-        </h1>
+        </Link>
 
         <div className={styles.actions}>
           <button onClick={toggleTheme} className={styles.themeToggle}>
@@ -69,48 +50,46 @@ export default function Navbar() {
         </div>
 
         <nav className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
+          <Link onClick={closeMenu} href="/" className={styles.link}>
+            Inicio
+          </Link>
           {!token && (
             <>
-              <a onClick={() => goTo("/login")} className={styles.link}>
+              <Link onClick={closeMenu} href="/login" className={styles.link}>
                 Login
-              </a>
-              <a onClick={() => goTo("/register")} className={styles.link}>
+              </Link>
+              <Link onClick={closeMenu} href="/register" className={styles.link}>
                 Register
-              </a>
+              </Link>
             </>
           )}
 
           {token && role === "user" && (
             <>
-              <a onClick={() => goTo("/picks")} className={styles.link}>
-                Ver Picks
-              </a>
-              <a onClick={() => goTo("/orders")} className={styles.link}>
+              <Link onClick={closeMenu} href="/orders" className={styles.link}>
                 Mis Compras
-              </a>
-              <a onClick={handleLogout} className={styles.logout}>
+              </Link>
+              <Link href="/" onClick={logout} className={styles.logout}>
                 Cerrar sesión
-              </a>
+              </Link>
             </>
           )}
 
           {token && role === "admin" && (
             <>
-              <button onClick={() => goTo("/picks")} className={styles.link}>
-                Ver Picks
-              </button>
-              <button
-                onClick={() => goTo("/admin/create-pick")}
+              <Link
+                onClick={closeMenu}
+                href="/admin/create-pick"
                 className={styles.link}
               >
                 Crear Pick
-              </button>
-              <button onClick={() => goTo("/orders")} className={styles.link}>
+              </Link>
+              <Link onClick={closeMenu} href="/orders" className={styles.link}>
                 Ver Órdenes
-              </button>
-              <button onClick={handleLogout} className={styles.logout}>
+              </Link>
+              <Link href="/" onClick={logout} className={styles.logout}>
                 Cerrar sesión
-              </button>
+              </Link>
             </>
           )}
         </nav>

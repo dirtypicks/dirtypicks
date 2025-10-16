@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import styles from "../../styles/auth.module.css";
+import styles from "../styles/auth.module.css";
 import { resetPassword } from "../utils/api";
 
 export default function ResetPasswordPage() {

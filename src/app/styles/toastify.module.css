@@ -1,0 +1,64 @@
+/* components/ToastProvider.module.css */
+
+/* Estilo base del toast */
+.toast {
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Estilo del contenido del toast */
+.toastBody {
+  color: var(--color-bg);
+}
+
+/* Estilo del botón de cerrar */
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var( --color-text);
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  line-height: 1;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.2);
+  background-color: transparent;
+}
+
+.closeButton:focus {
+  outline: none;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+} 
+
+.Toastify__toast--info {
+  background-color: var(--third-color);
+  color: var(--color-text);
+}
+
+.Toastify__toast--success {
+  background-color: var(--last-color);
+  color: white;
+}
+
+.Toastify__toast--warning {
+  background-color: var(--second-color);
+  color: black;
+}
+
+.Toastify__toast--error {
+  background-color: #f56260;
+  color: white;
+}

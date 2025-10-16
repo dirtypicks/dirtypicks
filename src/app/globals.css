@@ -1,10 +1,14 @@
-@import "../styles/theme.css";
+@import "./theme.css";
 
 /* Reset y base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
 
 html,
@@ -18,7 +22,7 @@ body {
 main {
   padding: 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 6rem 0;
 }
 
 input {
@@ -59,4 +63,14 @@ button:hover {
 
 button:active {
   transform: scale(0.98);
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  background-color: var(--color-card-bg);
+  color: var(--main-color);
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  background-color: var(--color-card-bg);
+  color: var(--main-color);
 }

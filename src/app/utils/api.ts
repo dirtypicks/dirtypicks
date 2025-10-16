@@ -88,8 +88,11 @@ export const deletePick = async (id: string) => {
 };
 
 // --- Orders ---
-export const createOrder = async (pickId: string) => {
-  const res = await api.post("/orders", { pickId });
+export const createOrder = async (pickId: string, email: string | null) => {
+  const data: any = { pickId }
+  if(email && email!="")
+    data.email = email;
+  const res = await api.post("/orders", data);
   return res.data;
 };
 
