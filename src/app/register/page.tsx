@@ -5,6 +5,7 @@ import styles from "../styles/auth.module.css";
 import { useRouter } from "next/navigation";
 import { registerUser } from "../utils/api";
 import Link from "next/link";
+import { showToast } from "../utils/general";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -17,6 +18,7 @@ export default function RegisterPage() {
     e.preventDefault();
     const res = await registerUser({name, email, password}) ;
     if (res?.msg) {
+      showToast("Se ha enviado un correo para que valides tu usuario. Gracias por registrarte", "success")
       setMsg(res.msg);
       setTimeout(() => router.push("/login"), 2000);
     }
