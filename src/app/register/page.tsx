@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "../../styles/auth.module.css";
 import { useRouter } from "next/navigation";
 import { registerUser } from "../utils/api";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -55,9 +56,9 @@ export default function RegisterPage() {
         </form>
         {msg && <p className={styles.success}>{msg}</p>}
         <p className={styles.linkGroup}>
-          <a href="/login" className={styles.link}>
+          <Link href="/login" className={styles.link}>
             ¿Ya tienes cuenta? Inicia sesión
-          </a>
+          </Link>
         </p>
       </div>
     </div>

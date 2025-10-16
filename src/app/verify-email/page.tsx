@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "../../styles/auth.module.css";
 import { verifyEmail } from "../utils/api";
+import Link from "next/link";
 
 export default function VerifyEmailPage() {
   const searchParams = useSearchParams();
@@ -25,9 +26,9 @@ export default function VerifyEmailPage() {
       <div className={styles.authCard}>
         <h1 className={styles.title}>Verificar correo</h1>
         <p className={styles.success}>{msg}</p>
-        <a href="/login" className={styles.link}>
+        <Link href="/login" className={styles.link}>
           Volver al inicio de sesión
-        </a>
+        </Link>
       </div>
     </div>
   );

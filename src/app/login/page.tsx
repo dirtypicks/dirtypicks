@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "../../styles/auth.module.css";
 import { loginUser } from "../utils/api";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -47,12 +48,12 @@ export default function LoginPage() {
       {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.linkGroup}>
-        <a className={styles.link} href="/register">
+        <Link className={styles.link} href="/register">
           ¿No tienes cuenta? Regístrate
-        </a>
-        <a className={styles.link} href="/forgot-password">
+        </Link>
+        <Link className={styles.link} href="/forgot-password">
           ¿Olvidaste tu contraseña?
-        </a>
+        </Link>
       </div>
     </div>
   </div>

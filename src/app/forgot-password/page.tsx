@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "../../styles/auth.module.css";
 import { requestPasswordReset } from "../utils/api";
+import Link from "next/link";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -32,9 +33,9 @@ export default function ForgotPasswordPage() {
           </button>
         </form>
         {msg && <p className={styles.success}>{msg}</p>}
-        <a href="/login" className={styles.link}>
+        <Link href="/login" className={styles.link}>
           Volver al inicio de sesión
-        </a>
+        </Link>
       </div>
     </div>
   );
