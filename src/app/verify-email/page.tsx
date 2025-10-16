@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import styles from "../../styles/auth.module.css";
+import styles from "../styles/auth.module.css";
 import { verifyEmail } from "../utils/api";
 import Link from "next/link";
 
