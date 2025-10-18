@@ -18,10 +18,18 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 1.4rem;
   font-weight: bold;
   cursor: pointer;
   color: var(--color-primary);
+
+  img {
+    width: 4rem;
+    border-radius: 50%
+  }
 }
 
 .actions {
@@ -95,7 +103,6 @@
     padding: 1rem;
     display: none;
     gap: 0.8rem;
-    border-top: 1px solid #333;
   }
 
   .navLinks.active {

@@ -39,7 +39,7 @@
   display: inline-block;
   font-size: 2rem;
   font-weight: bold;
-  color: var(--color-success);
+  color: var(--color-price);
   margin-bottom: 2rem;
 }
 

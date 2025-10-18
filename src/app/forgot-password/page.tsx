@@ -4,15 +4,20 @@ import { useState } from "react";
 import styles from "../styles/auth.module.css";
 import { requestPasswordReset } from "../utils/api";
 import Link from "next/link";
+import { showToast } from '../utils/general';
+import { useRouter } from "next/navigation";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await requestPasswordReset(email);
     setMsg(res?.msg || "Se ha enviado un correo con instrucciones.");
+    showToast(res?.msg || "Se ha enviado un correo con instrucciones.");
+    setTimeout(()=>router.push("/login"),1000);
   };
 
   return (
@@ -23,6 +28,7 @@ export default function ForgotPasswordPage() {
           <input
             type="email"
             placeholder="Correo electrónico"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={styles.input}

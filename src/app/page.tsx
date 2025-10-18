@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getAllPicks } from "./utils/api";
 import PickCard from "./components/PickCard";
 import styles from "./styles/Picks.module.css";
+import { Spinner } from "./components/Spinner";
 
 export default function PicksPage() {
   const [picks, setPicks] = useState<any[]>([]);
@@ -19,13 +20,13 @@ export default function PicksPage() {
     loadPicks();
   }, []);
 
-  if (loading) return <p className={styles.loading}>Cargando picks...</p>;
+  if (loading) return <Spinner message="Cargando picks..."/>;
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Hacemos que el casino se equivoque, no tú</h1>
       <div className={styles.grid}>
-        {picks.map((pick) => (
+        {picks?.map((pick) => (
           <PickCard key={pick.id} pick={pick} />
         ))}
       </div>

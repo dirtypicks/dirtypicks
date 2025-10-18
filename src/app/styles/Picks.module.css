@@ -55,7 +55,7 @@
 .price {
   font-size: 1.4rem;
   font-weight: bold;
-  color: var(--color-success);
+  color: var(--color-price);
 }
 
 .buyButton {

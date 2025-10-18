@@ -5,7 +5,7 @@
   border-radius: 5px;
   padding: 1rem;
   font-size: 0.875rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   position: relative;
 }
 
@@ -36,29 +36,4 @@
 
 .closeButton:focus {
   outline: none;
-}
-
-.Toastify__toast-theme--colored.Toastify__toast--default {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-} 
-
-.Toastify__toast--info {
-  background-color: var(--third-color);
-  color: var(--color-text);
-}
-
-.Toastify__toast--success {
-  background-color: var(--last-color);
-  color: white;
-}
-
-.Toastify__toast--warning {
-  background-color: var(--second-color);
-  color: black;
-}
-
-.Toastify__toast--error {
-  background-color: #f56260;
-  color: white;
 }

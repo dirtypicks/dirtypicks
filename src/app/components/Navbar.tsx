@@ -33,7 +33,7 @@ export default function Navbar() {
     <header className={styles.navbar}>
       <div className={styles.navbarContent}>
         <Link className={styles.logo} href="/" onClick={closeMenu}>
-          DirtyPicks
+          <img src={"/dirtypicks/tommy.jpg"}></img>DirtyPicks
         </Link>
 
         <div className={styles.actions}>

@@ -1,18 +1,24 @@
 :root {
-  /* Colores base (modo claro) */
-  --color-bg: #f5f5f5;
+  /* ===== MODO CLARO ===== */
+  --color-bg: #f3f5f4;
   --color-card-bg: #ffffff;
-  --color-text: #111111;
-  --color-text-secondary: #444444;
-  --color-primary: #e50914;
-  --color-primary-hover: #b20710;
-  --color-success: #0f9d58;
-  --color-error: #d93025;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --toastify-color-info: #8cb0c8 !important;
-  --toastify-color-success: #67a069 !important;
-  --toastify-color-warning: #f6dd7b !important;
-  --toastify-color-error: #d9534f !important;
+  --color-text: #1b1d1c;
+  --color-text-secondary: #5a5e5d;
+  --color-primary: #2f8f85;
+  /* Verde esmeralda elegante */
+  --color-primary-hover: #25706a;
+  /* Hover más profundo */
+  --color-success: #2fa879;
+  --color-error: #c75d4f;
+  --color-price: #d4a056;
+  /* Dorado cobrizo sobrio y elegante */
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+  /* Toastify */
+  --toastify-color-info: #4ea6a1 !important;
+  --toastify-color-success: #2fa879 !important;
+  --toastify-color-warning: #e2c468 !important;
+  --toastify-color-error: #c75d4f !important;
 }
 
 /* Modo oscuro */
@@ -21,13 +27,17 @@
   --color-card-bg: #1a1a1a;
   --color-text: #f5f5f5;
   --color-text-secondary: #cccccc;
-  --color-primary: #e59f09;
-  --color-primary-hover: #ffb81f;
+  --color-primary: #2f8f85;
+  --color-primary-hover: #25706a;
+
   --color-success: #34a853;
   --color-error: #ea4335;
+  --color-price: #d4a056;
+
   --shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
   --toastify-color-info: #8cb0c8 !important;
   --toastify-color-success: #67a069 !important;
   --toastify-color-warning: #f6dd7b !important;
   --toastify-color-error: #d9534f !important;
+  --toastify-color-light: #1a1a1a !important;
 }

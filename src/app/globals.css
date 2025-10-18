@@ -21,12 +21,24 @@ body {
 
 main {
   padding: 2rem;
-  max-width: 900px;
   margin: 6rem 0;
   justify-content: center;
   display: flex;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+textarea,
 input {
   padding: 0.7rem;
   border: 1px solid var(--color-text-secondary);
@@ -35,13 +47,16 @@ input {
   background: transparent;
   color: var(--color-text);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
 }
 
+textarea::placeholder,
 input::placeholder {
   color: var(--color-text-secondary);
   opacity: 0.7;
 }
 
+textarea:focus,
 input:focus {
   outline: none;
   border-color: var(--color-primary);
