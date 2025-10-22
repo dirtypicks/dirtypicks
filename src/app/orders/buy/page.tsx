@@ -8,6 +8,7 @@ import { useAuthStore } from "../../store/auth";
 import styles from "../../styles/BuyPick.module.css";
 import Link from "next/link";
 import { showToast } from "@/app/utils/general";
+import StripeForm from "./StripeForm";
 
 export default function BuyPickPage() {
   const params = useSearchParams();
@@ -17,13 +18,14 @@ export default function BuyPickPage() {
 
   const [pick, setPick] = useState<any>(null);
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loadingPick, setLoadingPick] = useState(true);
+  const [stripeData, setStripeData] = useState<{publishableKey:string, clientSecret: string}>();
 
   useEffect(() => {
     const fetchPick = async () => {
       const data = await getPickById(String(id));
       setPick(data);
-      setLoading(false);
+      setLoadingPick(false);
     };
     fetchPick();
   }, [id]);
@@ -34,12 +36,8 @@ export default function BuyPickPage() {
       if (!token && !email) return showToast("Ingresa tu correo para continuar", "warning");
       const data = await createOrder(pick.id, email);
       if (data.ok) {
-        const params = new URLSearchParams({
-          order: data.orderId,
-          client_secret: data.clientSecret,
-          pk: data.publishableKey,
-        });
-        router.push(`/payment?${params.toString()}`);
+        setStripeData(data);
+        //router.push(`/payment?${params.toString()}`);
       } else {
         showToast("Error al generar la orden", "error");
       }
@@ -48,7 +46,7 @@ export default function BuyPickPage() {
     }
   };
 
-  if (loading) return <p>Cargando pick...</p>;
+  if (loadingPick) return <p>Cargando pick...</p>;
   if (!pick) return <p>Pick no encontrado.</p>;
 
   return (
@@ -70,13 +68,15 @@ export default function BuyPickPage() {
           />
         )}
 
-        <button onClick={handleBuy} className={styles.buyBtn}>
-          Confirmar compra
-        </button>
+        {!stripeData ? <>
+          <button onClick={handleBuy} className={styles.buyBtn}>
+            Continuar compra
+          </button>
 
-        {!token && <Link className={styles.link} href="/register">
-          ¿No tienes cuenta? Regístrate
-        </Link>}
+          {!token && <Link className={styles.link} href="/register">
+            ¿No tienes cuenta? Regístrate
+          </Link>}
+        </> : <StripeForm clientSecret={stripeData.clientSecret} publishableKey={stripeData.publishableKey}/>}
 
       </div>
     </div>

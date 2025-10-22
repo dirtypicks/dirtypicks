@@ -2,8 +2,8 @@
 
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
-import { showToast } from "../utils/general";
-import { HOST_FRONT } from "../utils/api";
+import { showToast } from "../../utils/general";
+import { HOST_FRONT } from "../../utils/api";
 
 export default function CheckoutForm(props: { orderId: string }) {
     const {orderId} = props;
@@ -19,7 +19,7 @@ export default function CheckoutForm(props: { orderId: string }) {
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${HOST_FRONT}/payment/success?orderId=${orderId}`, // 👈 tu página de confirmación
+                return_url: `${HOST_FRONT}/orders/success`, // 👈 tu página de confirmación
             },
         });
         if (error) showToast(error.message || "Error al procesar pago", "error");
