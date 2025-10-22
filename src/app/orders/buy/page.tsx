@@ -39,7 +39,7 @@ export default function BuyPickPage() {
         setStripeData(data);
         //router.push(`/payment?${params.toString()}`);
       } else {
-        showToast("Error al generar la orden", "error");
+        showToast(`Error al generar la orden: ${data.msg}`, "error");
       }
     } catch {
       showToast("Error al generar la orden", "error");
