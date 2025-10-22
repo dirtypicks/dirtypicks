@@ -33,14 +33,18 @@ export default function BuyPickPage() {
     try {
       if (!token && !email) return showToast("Ingresa tu correo para continuar", "warning");
       const data = await createOrder(pick.id, email);
-      if(data.ok){
-        showToast("Se ha generado correctamente tu orden. Revisa tu correo", "success")
-        setEmail("");
-      }else{
-        showToast("Error al generar la orden", "error")
+      if (data.ok) {
+        const params = new URLSearchParams({
+          order: data.orderId,
+          client_secret: data.clientSecret,
+          pk: data.publishableKey,
+        });
+        router.push(`/payment?${params.toString()}`);
+      } else {
+        showToast("Error al generar la orden", "error");
       }
     } catch {
-      showToast("Error al generar la orden", "error")
+      showToast("Error al generar la orden", "error");
     }
   };
 

@@ -1,10 +1,11 @@
 import axios from "axios";
 
 const isProduction = process.env.NODE_ENV === "production";
-const host = isProduction ? "https://dirtypicks-production.up.railway.app" : "http://localhost:4000";
-const BASE_URL = `${host}/api`
+export const HOST = isProduction ? "https://dirtypicks-production.up.railway.app" : "http://localhost:4000";
+export const HOST_FRONT = isProduction ? "https://dirtypicks.github.io/dirtypicks" : "http://localhost:3000/dirtypicks";
+export const URL_BACK = `${HOST}/api`
 
-const api = axios.create({ baseURL: BASE_URL });
+export const api = axios.create({ baseURL: URL_BACK });
 
 // Añadir JWT a headers
 api.interceptors.request.use((config) => {
@@ -90,8 +91,8 @@ export const deletePick = async (id: string) => {
 };
 
 // --- Orders ---
-export const createOrder = async (pickId: string, email: string | null) => {
-  const data: any = { pickId }
+export const createOrder = async (pickId: string, email: string | null, provider: string = "STRIPE") => {
+  const data: any = { pickId, provider}
   if(email && email!="")
     data.email = email;
   const res = await api.post("/orders", data);
