@@ -29,7 +29,7 @@ export default function CheckoutForm(props: { orderId: string }) {
     return (
         <form onSubmit={handleSubmit}>
             <PaymentElement />
-            <button disabled={loading || !stripe}>
+            <button disabled={loading || !stripe} style={{display:"flex", margin:"8px auto"}}>
                 {loading ? "Procesando..." : "Pagar ahora"}
             </button>
         </form>
